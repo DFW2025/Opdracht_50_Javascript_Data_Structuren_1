@@ -1,0 +1,186 @@
+@import "./fonts";
+@import "./variables";
+@import "./mixins";
+
+/*  Mobile First */
+
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+html,
+body {
+	background-color: black;
+	font-family: "Montserrat", sans-serif;
+}
+
+.gridcontainer {
+	height: 100%;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 0.25fr;
+	grid-template-rows: 125px auto auto;
+	grid-template-areas: "h h h h" "m m m m" "f f f f";
+}
+
+
+/*  Header */
+
+.header {
+	grid-area: h;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #0f0f0f;
+	& h1 {
+		color: white;
+		font-size: 1em;
+		margin-top: 20px;
+		&::after {
+			background-color: #7777;
+			content: "NEW";
+			font-size: 0.4em;
+			padding-left: 10px;
+			display: block;
+			height: 10px;
+			width: 30px;
+			position: absolute;
+		}
+	}
+	& nav ul {
+		list-style-type: none;
+		font-size: 0.5em;
+		display: flex;
+		flex-flow: row wrap;
+		padding: 10px;
+		margin-top: 20px;
+		background-color: #0f0f0f
+	}
+	& nav ul li {
+		padding-left: 10px;
+		border-left: #68a7da solid 0.5px;
+		border-right: #68a7da solid 0.5px;
+		text-align: center;
+		text-transform: uppercase;
+	}
+}
+
+
+
+
+/*  Sidebar */
+
+.sidebar {
+	padding: 0px;
+	margin: 0px;
+	position: fixed;
+	right: -119px;
+	top: 150px;
+	width: 180px;
+}
+
+.sticky li {
+	list-style-type: none;
+	height: 60px;
+	padding: 0px;
+	transition: all 0.25s ease-in-out;
+	cursor: pointer;
+	&:hover {
+		margin-left: -170px;
+	}
+}
+
+
+
+
+
+/*  Main */
+
+.main {
+	grid-area: m;
+	background-color: #0f0f0f;
+	@include flexcenter (column wrap, center, center);
+	
+}
+
+.btn-group button {
+  background-color: #04AA6D; /* Green background */
+  border: 1px solid green; /* Green border */
+  color: white; /* White text */
+  padding: 10px 24px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  width: 500%; /* Set a width if needed */
+  display: block; /* Make the buttons appear below each other */
+  align-content: center;
+}
+
+.btn-group button:not(:last-child) {
+  border-bottom: none; /* Prevent double borders */
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+  background-color: #3e8e41;
+}
+
+#btn { text-align: center;}
+
+
+/*  Moviegallery */
+
+.gridgallery {
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+	grid-gap: 10px;
+	list-style-type: none;
+	text-align: center;
+	margin-top: 50px;
+	margin-bottom: 20px;
+	& h1 {
+		color: #cec0c0;
+		font-size: 1.1em;
+		padding-bottom: 5px;
+		text-transform: uppercase;
+		text-align: center;
+	}
+}
+
+
+/*  Mobile M */
+
+@media screen and (min-width:375px) {}
+
+
+/*  Mobile L */
+
+@media screen and (min-width:425px) {}
+
+
+/*  Tablet */
+
+@media screen and (min-width:768px) {}
+
+
+
+/*  Desktop */
+
+@media screen and (min-width:1024px) {}
+
+
+/*  Footer */
+
+.footer {
+	grid-area: f;
+	background-color: $backgroundcolorpurple;
+	@include flexcenter (row wrap, flex-end, center);
+}
+
+.copy {
+	padding: 20px 30px 20px;
+	color: rgb(51, 48, 48);
+	& a {
+		color: #fffdfe;
+		font-weight: bold;
+		text-decoration: none;
+	}
+}
